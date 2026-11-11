@@ -1,0 +1,260 @@
+Escenario: hora simulada 10:00:00 = 2026-11-11T20:31:53.071Z (UTC real)
+Servidor de tiempo detenido a las 20:32:10 y reiniciado a las 20:32:19 (UTC real), ~9 s sin servicio
+
+===== time-server =====
+
+[time-server] servidor de tiempo iniciado, hora local 10:00:01.751
+[time-server] hora 10:00:02.055 -> servidor-A
+[time-server] hora 10:00:02.127 -> servidor-A
+[time-server] hora 10:00:02.128 -> servidor-A
+[time-server] hora 10:00:02.154 -> servidor-C
+[time-server] hora 10:00:02.176 -> servidor-B
+[time-server] hora 10:00:02.190 -> servidor-C
+[time-server] hora 10:00:02.192 -> servidor-C
+[time-server] hora 10:00:02.208 -> servidor-B
+[time-server] hora 10:00:02.210 -> servidor-B
+[time-server] hora 10:00:02.337 -> servidor-A (latencia simulada: ida 200 ms, vuelta 200 ms)
+[time-server] hora 10:00:02.739 -> servidor-A (latencia simulada: ida 200 ms, vuelta 200 ms)
+[time-server] hora 10:00:03.141 -> servidor-A (latencia simulada: ida 200 ms, vuelta 200 ms)
+[time-server] hora 10:00:03.393 -> servidor-A (latencia simulada: ida 50 ms, vuelta 450 ms)
+[time-server] hora 10:00:03.898 -> servidor-A (latencia simulada: ida 50 ms, vuelta 450 ms)
+[time-server] hora 10:00:04.402 -> servidor-A (latencia simulada: ida 50 ms, vuelta 450 ms)
+[time-server] hora 10:00:06.197 -> servidor-C
+[time-server] hora 10:00:06.198 -> servidor-C
+[time-server] hora 10:00:06.198 -> servidor-C
+[time-server] hora 10:00:06.215 -> servidor-B
+[time-server] hora 10:00:06.216 -> servidor-B
+[time-server] hora 10:00:06.217 -> servidor-B
+[time-server] hora 10:00:06.356 -> servidor-A (latencia simulada: ida 1500 ms, vuelta 1500 ms)
+[time-server] hora 10:00:09.358 -> servidor-A (latencia simulada: ida 1500 ms, vuelta 1500 ms)
+[time-server] hora 10:00:10.199 -> servidor-C
+[time-server] hora 10:00:10.200 -> servidor-C
+[time-server] hora 10:00:10.201 -> servidor-C
+[time-server] hora 10:00:10.220 -> servidor-B
+[time-server] hora 10:00:10.221 -> servidor-B
+[time-server] hora 10:00:10.222 -> servidor-B
+[time-server] hora 10:00:12.360 -> servidor-A (latencia simulada: ida 1500 ms, vuelta 1500 ms)
+[time-server] hora 10:00:14.203 -> servidor-C
+[time-server] hora 10:00:14.204 -> servidor-C
+[time-server] hora 10:00:14.204 -> servidor-C
+[time-server] hora 10:00:14.225 -> servidor-B
+[time-server] hora 10:00:14.226 -> servidor-B
+[time-server] hora 10:00:14.227 -> servidor-B
+[time-server] hora 10:00:17.863 -> servidor-A
+[time-server] hora 10:00:17.864 -> servidor-A
+[time-server] hora 10:00:17.865 -> servidor-A
+[time-server] hora 10:00:18.205 -> servidor-C
+[time-server] hora 10:00:18.207 -> servidor-C
+[time-server] hora 10:00:18.207 -> servidor-C
+[time-server] hora 10:00:18.228 -> servidor-B
+[time-server] hora 10:00:18.229 -> servidor-B
+[time-server] hora 10:00:18.229 -> servidor-B
+[time-server] servidor de tiempo iniciado, hora local 10:00:29.112
+[time-server] hora 10:00:29.979 -> servidor-A
+[time-server] hora 10:00:30.208 -> servidor-C
+[time-server] hora 10:00:30.211 -> servidor-C
+[time-server] hora 10:00:32.835 -> servidor-B
+[time-server] hora 10:00:32.836 -> servidor-B
+[time-server] hora 10:00:32.837 -> servidor-B
+[time-server] hora 10:00:34.002 -> servidor-A
+[time-server] hora 10:00:34.003 -> servidor-A
+[time-server] hora 10:00:34.004 -> servidor-A
+[time-server] hora 10:00:34.212 -> servidor-C
+[time-server] hora 10:00:34.213 -> servidor-C
+[time-server] hora 10:00:34.214 -> servidor-C
+[time-server] hora 10:00:36.841 -> servidor-B
+[time-server] hora 10:00:36.842 -> servidor-B
+[time-server] hora 10:00:36.843 -> servidor-B
+[time-server] hora 10:00:38.003 -> servidor-A
+[time-server] hora 10:00:38.004 -> servidor-A
+[time-server] hora 10:00:38.004 -> servidor-A
+[time-server] hora 10:00:38.214 -> servidor-C
+[time-server] hora 10:00:38.215 -> servidor-C
+[time-server] hora 10:00:38.216 -> servidor-C
+[time-server] hora 10:00:42.007 -> servidor-A
+[time-server] hora 10:00:42.008 -> servidor-A
+[time-server] hora 10:00:42.009 -> servidor-A
+[time-server] hora 10:00:46.012 -> servidor-A
+[time-server] hora 10:00:46.014 -> servidor-A
+[time-server] hora 10:00:46.014 -> servidor-A
+[time-server] hora 10:00:50.020 -> servidor-A
+[time-server] hora 10:00:50.020 -> servidor-A
+[time-server] hora 10:00:50.021 -> servidor-A
+
+===== client-a =====
+
+[servidor-A 09:59:59.815] iniciado. Hora local 09:59:59.808 | servidor http://time-server:8080 | deriva 0 ppm
+[servidor-A 09:59:59.818] diferencia real con el servidor antes de sincronizar: -2.000 s
+[servidor-A 10:00:00.036] === Fase 'normal': red Docker sin latencia agregada ===
+[servidor-A 10:00:00.126]   muestra 1: T0=10:00:00.040 T1=10:00:00.125 servidor=10:00:02.055 RTT=85.3 ms
+[servidor-A 10:00:00.128]   muestra 2: T0=10:00:00.126 T1=10:00:00.128 servidor=10:00:02.127 RTT=1.8 ms
+[servidor-A 10:00:00.129]   muestra 3: T0=10:00:00.128 T1=10:00:00.129 servidor=10:00:02.128 RTT=1.0 ms
+[servidor-A 10:00:02.135]   mejor muestra RTT=1.0 ms -> hora estimada = servidor + RTT/2 (precision +/-0.5 ms)
+[servidor-A 10:00:02.135]   antes 10:00:00.135 | despues 10:00:02.135 | ajuste +2.000 s | error real -0.1 ms
+[servidor-A 10:00:02.135] === Fase 'simetrica': latencia simetrica: 200 ms de ida y 200 ms de vuelta ===
+[servidor-A 10:00:02.539]   muestra 1: T0=10:00:02.135 T1=10:00:02.539 servidor=10:00:02.337 RTT=403.2 ms
+[servidor-A 10:00:02.940]   muestra 2: T0=10:00:02.539 T1=10:00:02.940 servidor=10:00:02.739 RTT=401.7 ms
+[servidor-A 10:00:03.343]   muestra 3: T0=10:00:02.940 T1=10:00:03.342 servidor=10:00:03.141 RTT=402.1 ms
+[servidor-A 10:00:03.342]   mejor muestra RTT=401.7 ms -> hora estimada = servidor + RTT/2 (precision +/-200.9 ms)
+[servidor-A 10:00:03.342]   antes 10:00:03.343 | despues 10:00:03.342 | ajuste -0.000 s | error real -0.2 ms
+[servidor-A 10:00:03.342] === Fase 'asimetrica': latencia asimetrica: 50 ms de ida y 450 ms de vuelta ===
+[servidor-A 10:00:03.847]   muestra 1: T0=10:00:03.342 T1=10:00:03.847 servidor=10:00:03.393 RTT=504.2 ms
+[servidor-A 10:00:04.351]   muestra 2: T0=10:00:03.847 T1=10:00:04.351 servidor=10:00:03.898 RTT=504.2 ms
+[servidor-A 10:00:04.855]   muestra 3: T0=10:00:04.351 T1=10:00:04.855 servidor=10:00:04.402 RTT=504.3 ms
+[servidor-A 10:00:04.654]   mejor muestra RTT=504.2 ms -> hora estimada = servidor + RTT/2 (precision +/-252.1 ms)
+[servidor-A 10:00:04.654]   antes 10:00:04.855 | despues 10:00:04.654 | ajuste -0.201 s | error real -201.3 ms
+[servidor-A 10:00:04.654] === Fase 'alta': RTT muy alto: 1500 ms de ida y 1500 ms de vuelta (limite 1000 ms) ===
+[servidor-A 10:00:07.656]   muestra 1: T0=10:00:04.654 T1=10:00:07.656 servidor=10:00:06.356 RTT=3001.9 ms  -> DESCARTADA (RTT mayor al limite)
+[servidor-A 10:00:10.658]   muestra 2: T0=10:00:07.656 T1=10:00:10.658 servidor=10:00:09.358 RTT=3002.0 ms  -> DESCARTADA (RTT mayor al limite)
+[servidor-A 10:00:13.660]   muestra 3: T0=10:00:10.658 T1=10:00:13.660 servidor=10:00:12.360 RTT=3001.8 ms  -> DESCARTADA (RTT mayor al limite)
+[servidor-A 10:00:13.660]   sin muestras validas: se mantiene el reloj (correccion acumulada +1.799 s). Error real actual: -201.3 ms
+[servidor-A 10:00:17.661] === Resincronizacion periodica 1/7 ===
+[servidor-A 10:00:17.662]   muestra 1: T0=10:00:17.661 T1=10:00:17.662 servidor=10:00:17.863 RTT=1.3 ms
+[servidor-A 10:00:17.663]   muestra 2: T0=10:00:17.662 T1=10:00:17.663 servidor=10:00:17.864 RTT=0.6 ms
+[servidor-A 10:00:17.664]   muestra 3: T0=10:00:17.663 T1=10:00:17.664 servidor=10:00:17.865 RTT=0.9 ms
+[servidor-A 10:00:17.865]   mejor muestra RTT=0.6 ms -> hora estimada = servidor + RTT/2 (precision +/-0.3 ms)
+[servidor-A 10:00:17.865]   antes 10:00:17.664 | despues 10:00:17.865 | ajuste +0.201 s | error real -0.0 ms
+[servidor-A 10:00:21.867] === Resincronizacion periodica 2/7 ===
+[servidor-A 10:00:25.871]   muestra 1: el servidor de tiempo NO responde (TaskCanceledException: The request was canceled due to the configured HttpClient.Timeout of 4 seconds elapsing.)
+[servidor-A 10:00:29.872]   muestra 2: el servidor de tiempo NO responde (TaskCanceledException: The request was canceled due to the configured HttpClient.Timeout of 4 seconds elapsing.)
+[servidor-A 10:00:30.002]   muestra 3: T0=10:00:29.872 T1=10:00:30.002 servidor=10:00:29.979 RTT=129.9 ms
+[servidor-A 10:00:30.044]   mejor muestra RTT=129.9 ms -> hora estimada = servidor + RTT/2 (precision +/-65.0 ms)
+[servidor-A 10:00:30.044]   antes 10:00:30.002 | despues 10:00:30.044 | ajuste +0.042 s | error real +42.1 ms
+[servidor-A 10:00:34.044] === Resincronizacion periodica 3/7 ===
+[servidor-A 10:00:34.045]   muestra 1: T0=10:00:34.044 T1=10:00:34.045 servidor=10:00:34.002 RTT=1.1 ms
+[servidor-A 10:00:34.046]   muestra 2: T0=10:00:34.045 T1=10:00:34.046 servidor=10:00:34.003 RTT=0.6 ms
+[servidor-A 10:00:34.046]   muestra 3: T0=10:00:34.046 T1=10:00:34.046 servidor=10:00:34.004 RTT=0.6 ms
+[servidor-A 10:00:34.004]   mejor muestra RTT=0.6 ms -> hora estimada = servidor + RTT/2 (precision +/-0.3 ms)
+[servidor-A 10:00:34.004]   antes 10:00:34.046 | despues 10:00:34.004 | ajuste -0.042 s | error real -0.1 ms
+[servidor-A 10:00:38.002] === Resincronizacion periodica 4/7 ===
+[servidor-A 10:00:38.003]   muestra 1: T0=10:00:38.002 T1=10:00:38.003 servidor=10:00:38.003 RTT=1.2 ms
+[servidor-A 10:00:38.004]   muestra 2: T0=10:00:38.003 T1=10:00:38.004 servidor=10:00:38.004 RTT=0.7 ms
+[servidor-A 10:00:38.005]   muestra 3: T0=10:00:38.004 T1=10:00:38.005 servidor=10:00:38.004 RTT=1.0 ms
+[servidor-A 10:00:38.005]   mejor muestra RTT=0.7 ms -> hora estimada = servidor + RTT/2 (precision +/-0.3 ms)
+[servidor-A 10:00:38.005]   antes 10:00:38.005 | despues 10:00:38.005 | ajuste +0.000 s | error real -0.0 ms
+[servidor-A 10:00:42.007] === Resincronizacion periodica 5/7 ===
+[servidor-A 10:00:42.008]   muestra 1: T0=10:00:42.007 T1=10:00:42.008 servidor=10:00:42.007 RTT=1.2 ms
+[servidor-A 10:00:42.009]   muestra 2: T0=10:00:42.008 T1=10:00:42.009 servidor=10:00:42.008 RTT=0.7 ms
+[servidor-A 10:00:42.009]   muestra 3: T0=10:00:42.009 T1=10:00:42.009 servidor=10:00:42.009 RTT=0.6 ms
+[servidor-A 10:00:42.009]   mejor muestra RTT=0.6 ms -> hora estimada = servidor + RTT/2 (precision +/-0.3 ms)
+[servidor-A 10:00:42.009]   antes 10:00:42.009 | despues 10:00:42.009 | ajuste -0.000 s | error real -0.1 ms
+[servidor-A 10:00:46.011] === Resincronizacion periodica 6/7 ===
+[servidor-A 10:00:46.013]   muestra 1: T0=10:00:46.012 T1=10:00:46.013 servidor=10:00:46.012 RTT=1.4 ms
+[servidor-A 10:00:46.014]   muestra 2: T0=10:00:46.013 T1=10:00:46.014 servidor=10:00:46.014 RTT=1.0 ms
+[servidor-A 10:00:46.015]   muestra 3: T0=10:00:46.014 T1=10:00:46.015 servidor=10:00:46.014 RTT=0.8 ms
+[servidor-A 10:00:46.015]   mejor muestra RTT=0.8 ms -> hora estimada = servidor + RTT/2 (precision +/-0.4 ms)
+[servidor-A 10:00:46.015]   antes 10:00:46.015 | despues 10:00:46.015 | ajuste -0.000 s | error real -0.1 ms
+[servidor-A 10:00:50.019] === Resincronizacion periodica 7/7 ===
+[servidor-A 10:00:50.020]   muestra 1: T0=10:00:50.019 T1=10:00:50.020 servidor=10:00:50.020 RTT=1.1 ms
+[servidor-A 10:00:50.021]   muestra 2: T0=10:00:50.020 T1=10:00:50.021 servidor=10:00:50.020 RTT=0.7 ms
+[servidor-A 10:00:50.021]   muestra 3: T0=10:00:50.021 T1=10:00:50.021 servidor=10:00:50.021 RTT=0.6 ms
+[servidor-A 10:00:50.022]   mejor muestra RTT=0.6 ms -> hora estimada = servidor + RTT/2 (precision +/-0.3 ms)
+[servidor-A 10:00:50.022]   antes 10:00:50.021 | despues 10:00:50.022 | ajuste +0.000 s | error real -0.1 ms
+[servidor-A 10:00:50.022] fin
+
+===== client-b =====
+
+[servidor-B 10:00:08.083] iniciado. Hora local 10:00:08.070 | servidor http://time-server:8080 | deriva 5000 ppm
+[servidor-B 10:00:08.088] diferencia real con el servidor antes de sincronizar: +6.000 s
+[servidor-B 10:00:08.173] === Fase 'normal': red Docker sin latencia agregada ===
+[servidor-B 10:00:08.208]   muestra 1: T0=10:00:08.175 T1=10:00:08.208 servidor=10:00:02.176 RTT=32.9 ms
+[servidor-B 10:00:08.210]   muestra 2: T0=10:00:08.208 T1=10:00:08.210 servidor=10:00:02.208 RTT=2.2 ms
+[servidor-B 10:00:08.212]   muestra 3: T0=10:00:08.210 T1=10:00:08.212 servidor=10:00:02.210 RTT=1.2 ms
+[servidor-B 10:00:02.214]   mejor muestra RTT=1.2 ms -> hora estimada = servidor + RTT/2 (precision +/-0.6 ms)
+[servidor-B 10:00:02.214]   antes 10:00:08.215 | despues 10:00:02.214 | ajuste -6.001 s | error real -0.1 ms
+[servidor-B 10:00:06.235] === Resincronizacion periodica 1/7 ===
+[servidor-B 10:00:06.236]   muestra 1: T0=10:00:06.235 T1=10:00:06.236 servidor=10:00:06.215 RTT=1.3 ms
+[servidor-B 10:00:06.237]   muestra 2: T0=10:00:06.236 T1=10:00:06.237 servidor=10:00:06.216 RTT=0.8 ms
+[servidor-B 10:00:06.238]   muestra 3: T0=10:00:06.237 T1=10:00:06.238 servidor=10:00:06.217 RTT=0.9 ms
+[servidor-B 10:00:06.218]   mejor muestra RTT=0.8 ms -> hora estimada = servidor + RTT/2 (precision +/-0.4 ms)
+[servidor-B 10:00:06.218]   antes 10:00:06.238 | despues 10:00:06.218 | ajuste -0.020 s | error real -0.1 ms
+[servidor-B 10:00:10.239] === Resincronizacion periodica 2/7 ===
+[servidor-B 10:00:10.240]   muestra 1: T0=10:00:10.239 T1=10:00:10.240 servidor=10:00:10.220 RTT=1.1 ms
+[servidor-B 10:00:10.241]   muestra 2: T0=10:00:10.240 T1=10:00:10.241 servidor=10:00:10.221 RTT=0.8 ms
+[servidor-B 10:00:10.242]   muestra 3: T0=10:00:10.241 T1=10:00:10.242 servidor=10:00:10.222 RTT=0.9 ms
+[servidor-B 10:00:10.222]   mejor muestra RTT=0.8 ms -> hora estimada = servidor + RTT/2 (precision +/-0.4 ms)
+[servidor-B 10:00:10.222]   antes 10:00:10.242 | despues 10:00:10.222 | ajuste -0.020 s | error real -0.1 ms
+[servidor-B 10:00:14.244] === Resincronizacion periodica 3/7 ===
+[servidor-B 10:00:14.245]   muestra 1: T0=10:00:14.244 T1=10:00:14.245 servidor=10:00:14.225 RTT=1.2 ms
+[servidor-B 10:00:14.246]   muestra 2: T0=10:00:14.245 T1=10:00:14.246 servidor=10:00:14.226 RTT=0.8 ms
+[servidor-B 10:00:14.247]   muestra 3: T0=10:00:14.246 T1=10:00:14.247 servidor=10:00:14.227 RTT=0.8 ms
+[servidor-B 10:00:14.227]   mejor muestra RTT=0.8 ms -> hora estimada = servidor + RTT/2 (precision +/-0.4 ms)
+[servidor-B 10:00:14.227]   antes 10:00:14.247 | despues 10:00:14.227 | ajuste -0.020 s | error real -0.0 ms
+[servidor-B 10:00:18.247] === Resincronizacion periodica 4/7 ===
+[servidor-B 10:00:18.248]   muestra 1: T0=10:00:18.247 T1=10:00:18.248 servidor=10:00:18.228 RTT=1.2 ms
+[servidor-B 10:00:18.249]   muestra 2: T0=10:00:18.248 T1=10:00:18.249 servidor=10:00:18.229 RTT=0.6 ms
+[servidor-B 10:00:18.250]   muestra 3: T0=10:00:18.249 T1=10:00:18.250 servidor=10:00:18.229 RTT=0.6 ms
+[servidor-B 10:00:18.230]   mejor muestra RTT=0.6 ms -> hora estimada = servidor + RTT/2 (precision +/-0.3 ms)
+[servidor-B 10:00:18.230]   antes 10:00:18.250 | despues 10:00:18.230 | ajuste -0.020 s | error real -0.0 ms
+[servidor-B 10:00:22.252] === Resincronizacion periodica 5/7 ===
+[servidor-B 10:00:26.275]   muestra 1: el servidor de tiempo NO responde (TaskCanceledException: The request was canceled due to the configured HttpClient.Timeout of 4 seconds elapsing.)
+[servidor-B 10:00:28.885]   muestra 2: el servidor de tiempo NO responde (HttpRequestException: Name or service not known (time-server:8080))
+[servidor-B 10:00:28.887]   muestra 3: el servidor de tiempo NO responde (HttpRequestException: Connection refused (time-server:8080))
+[servidor-B 10:00:28.887]   sin muestras validas: se mantiene el reloj (correccion acumulada -6.081 s). Error real actual: +53.0 ms
+[servidor-B 10:00:32.906] === Resincronizacion periodica 6/7 ===
+[servidor-B 10:00:32.909]   muestra 1: T0=10:00:32.906 T1=10:00:32.909 servidor=10:00:32.835 RTT=2.1 ms
+[servidor-B 10:00:32.909]   muestra 2: T0=10:00:32.909 T1=10:00:32.909 servidor=10:00:32.836 RTT=0.8 ms
+[servidor-B 10:00:32.910]   muestra 3: T0=10:00:32.909 T1=10:00:32.910 servidor=10:00:32.837 RTT=0.7 ms
+[servidor-B 10:00:32.837]   mejor muestra RTT=0.7 ms -> hora estimada = servidor + RTT/2 (precision +/-0.3 ms)
+[servidor-B 10:00:32.837]   antes 10:00:32.910 | despues 10:00:32.837 | ajuste -0.073 s | error real -0.1 ms
+[servidor-B 10:00:36.860] === Resincronizacion periodica 7/7 ===
+[servidor-B 10:00:36.861]   muestra 1: T0=10:00:36.860 T1=10:00:36.861 servidor=10:00:36.841 RTT=1.2 ms
+[servidor-B 10:00:36.862]   muestra 2: T0=10:00:36.861 T1=10:00:36.862 servidor=10:00:36.842 RTT=0.9 ms
+[servidor-B 10:00:36.863]   muestra 3: T0=10:00:36.862 T1=10:00:36.863 servidor=10:00:36.843 RTT=0.8 ms
+[servidor-B 10:00:36.843]   mejor muestra RTT=0.8 ms -> hora estimada = servidor + RTT/2 (precision +/-0.4 ms)
+[servidor-B 10:00:36.843]   antes 10:00:36.863 | despues 10:00:36.843 | ajuste -0.020 s | error real -0.0 ms
+[servidor-B 10:00:36.843] fin
+
+===== client-c =====
+
+[servidor-C 09:59:55.053] iniciado. Hora local 09:59:55.038 | servidor http://time-server:8080 | deriva 0 ppm
+[servidor-C 09:59:55.057] diferencia real con el servidor antes de sincronizar: -7.000 s
+[servidor-C 09:59:55.150] === Fase 'normal': red Docker sin latencia agregada ===
+[servidor-C 09:59:55.189]   muestra 1: T0=09:59:55.152 T1=09:59:55.189 servidor=10:00:02.154 RTT=37.4 ms
+[servidor-C 09:59:55.191]   muestra 2: T0=09:59:55.189 T1=09:59:55.191 servidor=10:00:02.190 RTT=1.7 ms
+[servidor-C 09:59:55.192]   muestra 3: T0=09:59:55.191 T1=09:59:55.192 servidor=10:00:02.192 RTT=1.0 ms
+[servidor-C 10:00:02.196]   mejor muestra RTT=1.0 ms -> hora estimada = servidor + RTT/2 (precision +/-0.5 ms)
+[servidor-C 10:00:02.196]   antes 09:59:55.196 | despues 10:00:02.196 | ajuste +7.000 s | error real -0.2 ms
+[servidor-C 10:00:06.196] === Resincronizacion periodica 1/7 ===
+[servidor-C 10:00:06.197]   muestra 1: T0=10:00:06.196 T1=10:00:06.197 servidor=10:00:06.197 RTT=1.1 ms
+[servidor-C 10:00:06.198]   muestra 2: T0=10:00:06.197 T1=10:00:06.198 servidor=10:00:06.198 RTT=0.7 ms
+[servidor-C 10:00:06.199]   muestra 3: T0=10:00:06.198 T1=10:00:06.199 servidor=10:00:06.198 RTT=0.6 ms
+[servidor-C 10:00:06.199]   mejor muestra RTT=0.6 ms -> hora estimada = servidor + RTT/2 (precision +/-0.3 ms)
+[servidor-C 10:00:06.199]   antes 10:00:06.199 | despues 10:00:06.199 | ajuste -0.000 s | error real -0.1 ms
+[servidor-C 10:00:10.198] === Resincronizacion periodica 2/7 ===
+[servidor-C 10:00:10.200]   muestra 1: T0=10:00:10.198 T1=10:00:10.200 servidor=10:00:10.199 RTT=1.1 ms
+[servidor-C 10:00:10.201]   muestra 2: T0=10:00:10.200 T1=10:00:10.201 servidor=10:00:10.200 RTT=1.0 ms
+[servidor-C 10:00:10.201]   muestra 3: T0=10:00:10.201 T1=10:00:10.201 servidor=10:00:10.201 RTT=0.7 ms
+[servidor-C 10:00:10.201]   mejor muestra RTT=0.7 ms -> hora estimada = servidor + RTT/2 (precision +/-0.4 ms)
+[servidor-C 10:00:10.201]   antes 10:00:10.201 | despues 10:00:10.201 | ajuste -0.000 s | error real -0.1 ms
+[servidor-C 10:00:14.202] === Resincronizacion periodica 3/7 ===
+[servidor-C 10:00:14.203]   muestra 1: T0=10:00:14.202 T1=10:00:14.203 servidor=10:00:14.203 RTT=1.1 ms
+[servidor-C 10:00:14.204]   muestra 2: T0=10:00:14.203 T1=10:00:14.204 servidor=10:00:14.204 RTT=0.7 ms
+[servidor-C 10:00:14.205]   muestra 3: T0=10:00:14.204 T1=10:00:14.205 servidor=10:00:14.204 RTT=0.6 ms
+[servidor-C 10:00:14.205]   mejor muestra RTT=0.6 ms -> hora estimada = servidor + RTT/2 (precision +/-0.3 ms)
+[servidor-C 10:00:14.205]   antes 10:00:14.205 | despues 10:00:14.205 | ajuste +0.000 s | error real -0.0 ms
+[servidor-C 10:00:18.205] === Resincronizacion periodica 4/7 ===
+[servidor-C 10:00:18.206]   muestra 1: T0=10:00:18.205 T1=10:00:18.206 servidor=10:00:18.205 RTT=1.5 ms
+[servidor-C 10:00:18.207]   muestra 2: T0=10:00:18.206 T1=10:00:18.207 servidor=10:00:18.207 RTT=0.8 ms
+[servidor-C 10:00:18.208]   muestra 3: T0=10:00:18.207 T1=10:00:18.208 servidor=10:00:18.207 RTT=0.6 ms
+[servidor-C 10:00:18.208]   mejor muestra RTT=0.6 ms -> hora estimada = servidor + RTT/2 (precision +/-0.3 ms)
+[servidor-C 10:00:18.208]   antes 10:00:18.208 | despues 10:00:18.208 | ajuste +0.000 s | error real -0.0 ms
+[servidor-C 10:00:22.209] === Resincronizacion periodica 5/7 ===
+[servidor-C 10:00:26.212]   muestra 1: el servidor de tiempo NO responde (TaskCanceledException: The request was canceled due to the configured HttpClient.Timeout of 4 seconds elapsing.)
+[servidor-C 10:00:30.210]   muestra 2: T0=10:00:26.212 T1=10:00:30.210 servidor=10:00:30.208 RTT=3998.0 ms  -> DESCARTADA (RTT mayor al limite)
+[servidor-C 10:00:30.212]   muestra 3: T0=10:00:30.210 T1=10:00:30.212 servidor=10:00:30.211 RTT=1.6 ms
+[servidor-C 10:00:30.212]   mejor muestra RTT=1.6 ms -> hora estimada = servidor + RTT/2 (precision +/-0.8 ms)
+[servidor-C 10:00:30.212]   antes 10:00:30.212 | despues 10:00:30.212 | ajuste +0.000 s | error real +0.3 ms
+[servidor-C 10:00:34.212] === Resincronizacion periodica 6/7 ===
+[servidor-C 10:00:34.213]   muestra 1: T0=10:00:34.212 T1=10:00:34.213 servidor=10:00:34.212 RTT=1.8 ms
+[servidor-C 10:00:34.214]   muestra 2: T0=10:00:34.213 T1=10:00:34.214 servidor=10:00:34.213 RTT=0.8 ms
+[servidor-C 10:00:34.215]   muestra 3: T0=10:00:34.214 T1=10:00:34.215 servidor=10:00:34.214 RTT=0.7 ms
+[servidor-C 10:00:34.215]   mejor muestra RTT=0.7 ms -> hora estimada = servidor + RTT/2 (precision +/-0.4 ms)
+[servidor-C 10:00:34.215]   antes 10:00:34.215 | despues 10:00:34.215 | ajuste -0.000 s | error real -0.0 ms
+[servidor-C 10:00:38.214] === Resincronizacion periodica 7/7 ===
+[servidor-C 10:00:38.215]   muestra 1: T0=10:00:38.214 T1=10:00:38.215 servidor=10:00:38.214 RTT=1.3 ms
+[servidor-C 10:00:38.216]   muestra 2: T0=10:00:38.215 T1=10:00:38.216 servidor=10:00:38.215 RTT=0.8 ms
+[servidor-C 10:00:38.217]   muestra 3: T0=10:00:38.216 T1=10:00:38.217 servidor=10:00:38.216 RTT=0.9 ms
+[servidor-C 10:00:38.217]   mejor muestra RTT=0.8 ms -> hora estimada = servidor + RTT/2 (precision +/-0.4 ms)
+[servidor-C 10:00:38.217]   antes 10:00:38.217 | despues 10:00:38.217 | ajuste -0.000 s | error real -0.1 ms
+[servidor-C 10:00:38.217] fin

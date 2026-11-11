@@ -1,0 +1,109 @@
+Escenario: hora simulada 10:00:00 = 2026-11-11T20:37:27.295Z (UTC real)
+Relojes fisicos: OrdersService +0 s | InventoryService -3 s | PaymentsService +5 s
+
+===== Pedido 1: P001 x 2 (hay stock) =====
+
+$ curl -X POST http://localhost:8090/api/orders -d '{"productId":"P001","quantity":2,"amount":150}'
+{"orderId":"ORD-001","status":"CONFIRMED","lamport":12} [HTTP 200]
+
+===== Pedido 2: P003 x 1 (sin stock) =====
+
+$ curl -X POST http://localhost:8090/api/orders -d '{"productId":"P003","quantity":1,"amount":80}'
+{"orderId":"ORD-002","status":"REJECTED"} [HTTP 409]
+
+===== Registro de cada servicio =====
+
+[OrdersService] iniciado, reloj fisico 09:59:58.447
+[OrdersService] fisico 10:00:00.146 | Lamport   1 | vector [I=0,O=1,P=0] | Pedido recibido ORD-001: 2 x P001
+[OrdersService] fisico 10:00:00.151 | Lamport   2 | vector [I=0,O=2,P=0] | Mensaje enviado a InventoryService (pedido ORD-001)
+[OrdersService] fisico 10:00:00.309 | Lamport   6 | vector [I=3,O=3,P=0] | Respuesta de InventoryService recibida (pedido ORD-001) (recibido L=5 > local L=2: salta a 6)
+[OrdersService] fisico 10:00:00.316 | Lamport   7 | vector [I=3,O=4,P=0] | Solicitud de pago enviada a PaymentsService (pedido ORD-001)
+[OrdersService] fisico 10:00:00.481 | Lamport  11 | vector [I=3,O=5,P=7] | Confirmacion de pago recibida (pedido ORD-001) (recibido L=10 > local L=7: salta a 11)
+[OrdersService] fisico 10:00:00.482 | Lamport  12 | vector [I=3,O=6,P=7] | Pedido ORD-001 confirmado
+[OrdersService] fisico 10:00:00.529 | Lamport  13 | vector [I=3,O=7,P=7] | Pedido recibido ORD-002: 1 x P003
+[OrdersService] fisico 10:00:00.529 | Lamport  14 | vector [I=3,O=8,P=7] | Mensaje enviado a InventoryService (pedido ORD-002)
+[OrdersService] fisico 10:00:00.534 | Lamport  18 | vector [I=6,O=9,P=7] | Respuesta de InventoryService recibida (pedido ORD-002) (recibido L=17 > local L=14: salta a 18)
+[OrdersService] fisico 10:00:00.534 | Lamport  19 | vector [I=6,O=10,P=7] | Pedido ORD-002 rechazado: sin stock
+
+[InventoryService] iniciado, reloj fisico 09:59:55.244
+[InventoryService] fisico 09:59:57.290 | Lamport   3 | vector [I=1,O=2,P=0] | Mensaje recibido de OrdersService (pedido ORD-001) (recibido L=2 > local L=0: salta a 3)
+[InventoryService] fisico 09:59:57.292 | Lamport   4 | vector [I=2,O=2,P=0] | Inventario verificado: P001 stock 10, pedido 2 -> reservado
+[InventoryService] fisico 09:59:57.292 | Lamport   5 | vector [I=3,O=2,P=0] | Respuesta enviada a OrdersService (pedido ORD-001)
+[InventoryService] fisico 09:59:57.533 | Lamport  15 | vector [I=4,O=8,P=7] | Mensaje recibido de OrdersService (pedido ORD-002) (recibido L=14 > local L=5: salta a 15)
+[InventoryService] fisico 09:59:57.533 | Lamport  16 | vector [I=5,O=8,P=7] | Inventario verificado: P003 stock 0, pedido 1 -> sin stock
+[InventoryService] fisico 09:59:57.533 | Lamport  17 | vector [I=6,O=8,P=7] | Respuesta enviada a OrdersService (pedido ORD-002)
+
+[PaymentsService] fisico 10:00:03.162 | Lamport   1 | vector [I=0,O=0,P=1] | Pago de otro pedido procesado (#1, sin relacion con este flujo)
+[PaymentsService] fisico 10:00:03.181 | Lamport   2 | vector [I=0,O=0,P=2] | Pago de otro pedido procesado (#2, sin relacion con este flujo)
+[PaymentsService] fisico 10:00:03.182 | Lamport   3 | vector [I=0,O=0,P=3] | Pago de otro pedido procesado (#3, sin relacion con este flujo)
+[PaymentsService] fisico 10:00:03.182 | Lamport   4 | vector [I=0,O=0,P=4] | Pago de otro pedido procesado (#4, sin relacion con este flujo)
+[PaymentsService] iniciado, reloj fisico 10:00:03.191
+[PaymentsService] fisico 10:00:05.419 | Lamport   8 | vector [I=3,O=4,P=5] | Solicitud de pago recibida (pedido ORD-001) (recibido L=7 > local L=4: salta a 8)
+[PaymentsService] fisico 10:00:05.470 | Lamport   9 | vector [I=3,O=4,P=6] | Pago procesado: $150.00 aprobado
+[PaymentsService] fisico 10:00:05.470 | Lamport  10 | vector [I=3,O=4,P=7] | Confirmacion enviada a OrdersService (pedido ORD-001)
+
+
+===== GET /api/timeline (eventos de los tres servicios) =====
+
+=== Orden total por reloj de Lamport (desempate por nombre de proceso) ===
+proceso           reloj fisico   Lamport  vector          evento
+OrdersService     10:00:00.146   1        I=0,O=1,P=0     Pedido recibido ORD-001: 2 x P001
+PaymentsService   10:00:03.162   1        I=0,O=0,P=1     Pago de otro pedido procesado (#1, sin relacion con este flujo)
+OrdersService     10:00:00.151   2        I=0,O=2,P=0     Mensaje enviado a InventoryService (pedido ORD-001)
+PaymentsService   10:00:03.181   2        I=0,O=0,P=2     Pago de otro pedido procesado (#2, sin relacion con este flujo)
+InventoryService  09:59:57.290   3        I=1,O=2,P=0     Mensaje recibido de OrdersService (pedido ORD-001) (recibido L=2 > local L=0: salta a 3)
+PaymentsService   10:00:03.182   3        I=0,O=0,P=3     Pago de otro pedido procesado (#3, sin relacion con este flujo)
+InventoryService  09:59:57.292   4        I=2,O=2,P=0     Inventario verificado: P001 stock 10, pedido 2 -> reservado
+PaymentsService   10:00:03.182   4        I=0,O=0,P=4     Pago de otro pedido procesado (#4, sin relacion con este flujo)
+InventoryService  09:59:57.292   5        I=3,O=2,P=0     Respuesta enviada a OrdersService (pedido ORD-001)
+OrdersService     10:00:00.309   6        I=3,O=3,P=0     Respuesta de InventoryService recibida (pedido ORD-001) (recibido L=5 > local L=2: salta a 6)
+OrdersService     10:00:00.316   7        I=3,O=4,P=0     Solicitud de pago enviada a PaymentsService (pedido ORD-001)
+PaymentsService   10:00:05.419   8        I=3,O=4,P=5     Solicitud de pago recibida (pedido ORD-001) (recibido L=7 > local L=4: salta a 8)
+PaymentsService   10:00:05.470   9        I=3,O=4,P=6     Pago procesado: $150.00 aprobado
+PaymentsService   10:00:05.470   10       I=3,O=4,P=7     Confirmacion enviada a OrdersService (pedido ORD-001)
+OrdersService     10:00:00.481   11       I=3,O=5,P=7     Confirmacion de pago recibida (pedido ORD-001) (recibido L=10 > local L=7: salta a 11)
+OrdersService     10:00:00.482   12       I=3,O=6,P=7     Pedido ORD-001 confirmado
+OrdersService     10:00:00.529   13       I=3,O=7,P=7     Pedido recibido ORD-002: 1 x P003
+OrdersService     10:00:00.529   14       I=3,O=8,P=7     Mensaje enviado a InventoryService (pedido ORD-002)
+InventoryService  09:59:57.533   15       I=4,O=8,P=7     Mensaje recibido de OrdersService (pedido ORD-002) (recibido L=14 > local L=5: salta a 15)
+InventoryService  09:59:57.533   16       I=5,O=8,P=7     Inventario verificado: P003 stock 0, pedido 1 -> sin stock
+InventoryService  09:59:57.533   17       I=6,O=8,P=7     Respuesta enviada a OrdersService (pedido ORD-002)
+OrdersService     10:00:00.534   18       I=6,O=9,P=7     Respuesta de InventoryService recibida (pedido ORD-002) (recibido L=17 > local L=14: salta a...
+OrdersService     10:00:00.534   19       I=6,O=10,P=7    Pedido ORD-002 rechazado: sin stock
+
+=== Orden por reloj fisico (hora local de cada servicio) ===
+proceso           reloj fisico   Lamport  vector          evento
+InventoryService  09:59:57.290   3        I=1,O=2,P=0     Mensaje recibido de OrdersService (pedido ORD-001) (recibido L=2 > local L=0: salta a 3)
+InventoryService  09:59:57.292   4        I=2,O=2,P=0     Inventario verificado: P001 stock 10, pedido 2 -> reservado
+InventoryService  09:59:57.292   5        I=3,O=2,P=0     Respuesta enviada a OrdersService (pedido ORD-001)
+InventoryService  09:59:57.533   15       I=4,O=8,P=7     Mensaje recibido de OrdersService (pedido ORD-002) (recibido L=14 > local L=5: salta a 15)
+InventoryService  09:59:57.533   16       I=5,O=8,P=7     Inventario verificado: P003 stock 0, pedido 1 -> sin stock
+InventoryService  09:59:57.533   17       I=6,O=8,P=7     Respuesta enviada a OrdersService (pedido ORD-002)
+OrdersService     10:00:00.146   1        I=0,O=1,P=0     Pedido recibido ORD-001: 2 x P001
+OrdersService     10:00:00.151   2        I=0,O=2,P=0     Mensaje enviado a InventoryService (pedido ORD-001)
+OrdersService     10:00:00.309   6        I=3,O=3,P=0     Respuesta de InventoryService recibida (pedido ORD-001) (recibido L=5 > local L=2: salta a 6)
+OrdersService     10:00:00.316   7        I=3,O=4,P=0     Solicitud de pago enviada a PaymentsService (pedido ORD-001)
+OrdersService     10:00:00.481   11       I=3,O=5,P=7     Confirmacion de pago recibida (pedido ORD-001) (recibido L=10 > local L=7: salta a 11)
+OrdersService     10:00:00.482   12       I=3,O=6,P=7     Pedido ORD-001 confirmado
+OrdersService     10:00:00.529   13       I=3,O=7,P=7     Pedido recibido ORD-002: 1 x P003
+OrdersService     10:00:00.529   14       I=3,O=8,P=7     Mensaje enviado a InventoryService (pedido ORD-002)
+OrdersService     10:00:00.534   18       I=6,O=9,P=7     Respuesta de InventoryService recibida (pedido ORD-002) (recibido L=17 > local L=14: salta a...
+OrdersService     10:00:00.534   19       I=6,O=10,P=7    Pedido ORD-002 rechazado: sin stock
+PaymentsService   10:00:03.162   1        I=0,O=0,P=1     Pago de otro pedido procesado (#1, sin relacion con este flujo)
+PaymentsService   10:00:03.181   2        I=0,O=0,P=2     Pago de otro pedido procesado (#2, sin relacion con este flujo)
+PaymentsService   10:00:03.182   3        I=0,O=0,P=3     Pago de otro pedido procesado (#3, sin relacion con este flujo)
+PaymentsService   10:00:03.182   4        I=0,O=0,P=4     Pago de otro pedido procesado (#4, sin relacion con este flujo)
+PaymentsService   10:00:05.419   8        I=3,O=4,P=5     Solicitud de pago recibida (pedido ORD-001) (recibido L=7 > local L=4: salta a 8)
+PaymentsService   10:00:05.470   9        I=3,O=4,P=6     Pago procesado: $150.00 aprobado
+PaymentsService   10:00:05.470   10       I=3,O=4,P=7     Confirmacion enviada a OrdersService (pedido ORD-001)
+
+=== Inconsistencias del reloj fisico: 93 pares donde a -> b pero hora(b) < hora(a) ===
+  Orders L=2 [I=0,O=2,P=0] "Mensaje enviado a InventoryService ..."  ->  Inventory L=3 [I=1,O=2,P=0] "Mensaje recibido de OrdersService (..."  (hora(b) - hora(a) = -2.861 s)
+  Payments L=10 [I=3,O=4,P=7] "Confirmacion enviada a OrdersServic..."  ->  Orders L=11 [I=3,O=5,P=7] "Confirmacion de pago recibida (pedi..."  (hora(b) - hora(a) = -4.990 s)
+  Orders L=14 [I=3,O=8,P=7] "Mensaje enviado a InventoryService ..."  ->  Inventory L=15 [I=4,O=8,P=7] "Mensaje recibido de OrdersService (..."  (hora(b) - hora(a) = -2.997 s)
+
+=== Eventos concurrentes con L(a) < L(b): 24 pares (Lamport no los distingue) ===
+  Orders L=1 [I=0,O=1,P=0] "Pedido recibido ORD-001: 2 x P001"  ||  Payments L=2 [I=0,O=0,P=2] "Pago de otro pedido procesado (#2, ..."
+  Orders L=1 [I=0,O=1,P=0] "Pedido recibido ORD-001: 2 x P001"  ||  Payments L=3 [I=0,O=0,P=3] "Pago de otro pedido procesado (#3, ..."
+  Orders L=1 [I=0,O=1,P=0] "Pedido recibido ORD-001: 2 x P001"  ||  Payments L=4 [I=0,O=0,P=4] "Pago de otro pedido procesado (#4, ..."
+  Orders L=2 [I=0,O=2,P=0] "Mensaje enviado a InventoryService ..."  ||  Payments L=3 [I=0,O=0,P=3] "Pago de otro pedido procesado (#3, ..."

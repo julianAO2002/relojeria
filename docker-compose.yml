@@ -1,0 +1,151 @@
+# One profile per exercise:
+#   docker compose --profile cristian up --build
+#   docker compose --profile berkeley up --build
+#   docker compose --profile lamport  up --build
+#
+# Clock skew is simulated in each application (containers share the host clock):
+#   CLOCK_OFFSET_SECONDS  initial offset of the clock
+#   CLOCK_DRIFT_PPM       drift in parts per million (1000 ppm = 1 ms per second)
+#   SCENARIO_START_UTC    real instant that is shown as 10:00:00 (set by the scripts; empty = real UTC)
+
+x-common-env: &common-env
+  SCENARIO_START_UTC: ${SCENARIO_START_UTC:-}
+  Logging__LogLevel__Default: Warning
+
+services:
+  # ---------------------------------------------------------------- Exercise 1: Cristian
+  time-server:
+    profiles: [cristian]
+    build: { context: ., args: { PROJECT: Cristian.TimeServer } }
+    image: relojeria/cristian-time-server
+    environment:
+      <<: *common-env
+      SERVER_NAME: time-server
+      CLOCK_OFFSET_SECONDS: "2"            # 10:00:02
+    networks: [relojeria]
+
+  client-a:
+    profiles: [cristian]
+    build: { context: ., args: { PROJECT: Cristian.Client } }
+    image: relojeria/cristian-client
+    depends_on: [time-server]
+    environment: &cristian-client
+      <<: *common-env
+      CLIENT_NAME: servidor-A
+      TIME_SERVER_URL: http://time-server:8080
+      CLOCK_OFFSET_SECONDS: "0"            # 10:00:00
+      PHASES: normal,simetrica,asimetrica,alta
+      ROUNDS: ${CRISTIAN_ROUNDS:-4}
+      SYNC_INTERVAL_SECONDS: "4"
+      EVAL_SERVER_OFFSET_SECONDS: "2"      # only to print the real error
+    networks: [relojeria]
+
+  client-b:
+    profiles: [cristian]
+    image: relojeria/cristian-client
+    depends_on: [time-server, client-a]
+    environment:
+      <<: *cristian-client
+      CLIENT_NAME: servidor-B
+      CLOCK_OFFSET_SECONDS: "8"            # 10:00:08
+      CLOCK_DRIFT_PPM: "5000"              # runs 5 ms fast every second
+      PHASES: normal
+    networks: [relojeria]
+
+  client-c:
+    profiles: [cristian]
+    image: relojeria/cristian-client
+    depends_on: [time-server, client-a]
+    environment:
+      <<: *cristian-client
+      CLIENT_NAME: servidor-C
+      CLOCK_OFFSET_SECONDS: "-5"           # 09:59:55
+      PHASES: normal
+    networks: [relojeria]
+
+  # ---------------------------------------------------------------- Exercise 2: Berkeley
+  nodo-1:
+    profiles: [berkeley]
+    build: { context: ., args: { PROJECT: Berkeley.Node } }
+    image: relojeria/berkeley-node
+    environment:
+      <<: *common-env
+      NODE_NAME: nodo-1
+      CLOCK_OFFSET_SECONDS: ${NODE1_OFFSET:-10}
+    ports: ["18081:8080"]
+    networks: [relojeria]
+
+  nodo-2:
+    profiles: [berkeley]
+    image: relojeria/berkeley-node
+    depends_on: [nodo-1]
+    environment:
+      <<: *common-env
+      NODE_NAME: nodo-2
+      CLOCK_OFFSET_SECONDS: ${NODE2_OFFSET:--6}
+      CLOCK_DRIFT_PPM: ${NODE2_DRIFT_PPM:-2000}
+    ports: ["18082:8080"]
+    networks: [relojeria]
+
+  nodo-3:
+    profiles: [berkeley]
+    image: relojeria/berkeley-node
+    depends_on: [nodo-1]
+    environment:
+      <<: *common-env
+      NODE_NAME: nodo-3
+      CLOCK_OFFSET_SECONDS: ${NODE3_OFFSET:-4}
+    ports: ["18083:8080"]
+    networks: [relojeria]
+
+  coordinador:
+    profiles: [berkeley]
+    build: { context: ., args: { PROJECT: Berkeley.Coordinator } }
+    image: relojeria/berkeley-coordinator
+    depends_on: [nodo-1, nodo-2, nodo-3]
+    environment:
+      <<: *common-env
+      COORDINATOR_NAME: coordinador
+      NODES: http://nodo-1:8080,http://nodo-2:8080,http://nodo-3:8080
+      CLOCK_OFFSET_SECONDS: "0"
+      INTERVAL_SECONDS: ${BERKELEY_INTERVAL:-5}
+      ROUNDS: ${BERKELEY_ROUNDS:-3}
+      OUTLIER_THRESHOLD_SECONDS: ${OUTLIER_THRESHOLD:-0}
+    networks: [relojeria]
+
+  # ---------------------------------------------------------------- Exercise 3: Lamport
+  orders-service:
+    profiles: [lamport]
+    build: { context: ., args: { PROJECT: Lamport.Orders } }
+    image: relojeria/lamport-orders
+    depends_on: [inventory-service, payments-service]
+    environment:
+      <<: *common-env
+      CLOCK_OFFSET_SECONDS: "0"
+      INVENTORY_URL: http://inventory-service:8080
+      PAYMENTS_URL: http://payments-service:8080
+    ports: ["8090:8080"]
+    networks: [relojeria]
+
+  inventory-service:
+    profiles: [lamport]
+    build: { context: ., args: { PROJECT: Lamport.Inventory } }
+    image: relojeria/lamport-inventory
+    environment:
+      <<: *common-env
+      CLOCK_OFFSET_SECONDS: "-3"           # its physical clock is 3 s behind
+    networks: [relojeria]
+
+  payments-service:
+    profiles: [lamport]
+    build: { context: ., args: { PROJECT: Lamport.Payments } }
+    image: relojeria/lamport-payments
+    environment:
+      <<: *common-env
+      CLOCK_OFFSET_SECONDS: "5"            # its physical clock is 5 s ahead
+      PRELOAD_EVENTS: "4"                  # payments of other orders before this flow
+    networks: [relojeria]
+
+networks:
+  relojeria:
+    driver: bridge

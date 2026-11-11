@@ -1,0 +1,252 @@
+
+===== Escenario 1 - diferencias iniciales de hasta 5 s =====
+
+Relojes iniciales: coordinador 0 s, nodo-1 5 s, nodo-2 -3 s, nodo-3 2 s
+
+[coordinador 09:59:58.569] iniciado. Hora local 09:59:58.549 | nodos: http://nodo-1:8080, http://nodo-2:8080, http://nodo-3:8080 | intervalo 5 s | promedio simple
+[coordinador 10:00:00.580] ===== Ronda 1 =====
+[coordinador 10:00:00.782] participante  hora           diferencia   en promedio  ajuste       hora ajustada
+[coordinador 10:00:00.782] coordinador   10:00:00.775   +0.000 s     si           +1.024 s     10:00:01.799
+[coordinador 10:00:00.782] nodo-1        10:00:05.813   +5.038 s     si           -4.014 s     10:00:01.799
+[coordinador 10:00:00.783] nodo-2        09:59:57.806   -2.969 s     si           +3.994 s     10:00:01.799
+[coordinador 10:00:00.783] nodo-3        10:00:02.804   +2.029 s     si           -1.004 s     10:00:01.799
+[coordinador 10:00:00.786] promedio de diferencias: +1.024 s | dispersion antes del ajuste (max - min): +8.008 s
+[coordinador 10:00:06.858] ===== Ronda 2 =====
+[coordinador 10:00:06.859] participante  hora           diferencia   en promedio  ajuste       hora ajustada
+[coordinador 10:00:06.859] coordinador   10:00:06.859   +0.000 s     si           -0.022 s     10:00:06.838
+[coordinador 10:00:06.860] nodo-1        10:00:06.821   -0.038 s     si           +0.017 s     10:00:06.838
+[coordinador 10:00:06.860] nodo-2        10:00:06.840   -0.019 s     si           -0.002 s     10:00:06.838
+[coordinador 10:00:06.860] nodo-3        10:00:06.830   -0.029 s     si           +0.007 s     10:00:06.838
+[coordinador 10:00:06.860] promedio de diferencias: -0.022 s | dispersion antes del ajuste (max - min): +0.038 s
+[coordinador 10:00:06.844] fin
+
+[nodo-1] nodo iniciado, hora local 10:00:03.190 (deriva 0 ppm)
+[nodo-1] ajuste recibido -4.014 s: 10:00:05.806 -> 10:00:01.792
+[nodo-1] ajuste recibido +0.017 s: 10:00:06.823 -> 10:00:06.839
+[nodo-2] nodo iniciado, hora local 09:59:55.436 (deriva 2000 ppm)
+[nodo-2] ajuste recibido +3.994 s: 09:59:57.822 -> 10:00:01.816
+[nodo-2] ajuste recibido -0.002 s: 10:00:06.844 -> 10:00:06.841
+[nodo-3] nodo iniciado, hora local 10:00:00.494 (deriva 0 ppm)
+[nodo-3] ajuste recibido -1.004 s: 10:00:02.833 -> 10:00:01.829
+[nodo-3] ajuste recibido +0.007 s: 10:00:06.836 -> 10:00:06.843
+
+===== Escenario 2 - diferencias iniciales de hasta 10 s =====
+
+Relojes iniciales: coordinador 0 s, nodo-1 10 s, nodo-2 -6 s, nodo-3 4 s
+
+[coordinador 09:59:58.646] iniciado. Hora local 09:59:58.634 | nodos: http://nodo-1:8080, http://nodo-2:8080, http://nodo-3:8080 | intervalo 5 s | promedio simple
+[coordinador 10:00:00.655] ===== Ronda 1 =====
+[coordinador 10:00:00.879] participante  hora           diferencia   en promedio  ajuste       hora ajustada
+[coordinador 10:00:00.879] coordinador   10:00:00.871   +0.000 s     si           +2.029 s     10:00:02.900
+[coordinador 10:00:00.879] nodo-1        10:00:10.918   +10.047 s    si           -8.018 s     10:00:02.900
+[coordinador 10:00:00.879] nodo-2        09:59:54.909   -5.962 s     si           +7.992 s     10:00:02.900
+[coordinador 10:00:00.879] nodo-3        10:00:04.903   +4.032 s     si           -2.003 s     10:00:02.900
+[coordinador 10:00:00.884] promedio de diferencias: +2.029 s | dispersion antes del ajuste (max - min): +16.010 s
+[coordinador 10:00:07.971] ===== Ronda 2 =====
+[coordinador 10:00:07.973] participante  hora           diferencia   en promedio  ajuste       hora ajustada
+[coordinador 10:00:07.974] coordinador   10:00:07.973   +0.000 s     si           -0.026 s     10:00:07.947
+[coordinador 10:00:07.974] nodo-1        10:00:07.926   -0.047 s     si           +0.021 s     10:00:07.947
+[coordinador 10:00:07.974] nodo-2        10:00:07.947   -0.026 s     si           -0.000 s     10:00:07.947
+[coordinador 10:00:07.974] nodo-3        10:00:07.941   -0.032 s     si           +0.006 s     10:00:07.947
+[coordinador 10:00:07.974] promedio de diferencias: -0.026 s | dispersion antes del ajuste (max - min): +0.047 s
+[coordinador 10:00:07.952] fin
+
+[nodo-1] nodo iniciado, hora local 10:00:08.200 (deriva 0 ppm)
+[nodo-1] ajuste recibido -8.018 s: 10:00:10.908 -> 10:00:02.890
+[nodo-1] ajuste recibido +0.021 s: 10:00:07.927 -> 10:00:07.948
+[nodo-2] nodo iniciado, hora local 09:59:52.528 (deriva 2000 ppm)
+[nodo-2] ajuste recibido +7.992 s: 09:59:54.928 -> 10:00:02.920
+[nodo-2] ajuste recibido -0.000 s: 10:00:07.951 -> 10:00:07.951
+[nodo-3] nodo iniciado, hora local 10:00:02.513 (deriva 0 ppm)
+[nodo-3] ajuste recibido -2.003 s: 10:00:04.942 -> 10:00:02.939
+[nodo-3] ajuste recibido +0.006 s: 10:00:07.946 -> 10:00:07.952
+
+===== Escenario 3 - diferencias iniciales de hasta 20 s =====
+
+Relojes iniciales: coordinador 0 s, nodo-1 20 s, nodo-2 -12 s, nodo-3 8 s
+
+[coordinador 09:59:58.608] iniciado. Hora local 09:59:58.600 | nodos: http://nodo-1:8080, http://nodo-2:8080, http://nodo-3:8080 | intervalo 5 s | promedio simple
+[coordinador 10:00:00.618] ===== Ronda 1 =====
+[coordinador 10:00:00.835] participante  hora           diferencia   en promedio  ajuste       hora ajustada
+[coordinador 10:00:00.835] coordinador   10:00:00.828   +0.000 s     si           +4.031 s     10:00:04.859
+[coordinador 10:00:00.836] nodo-1        10:00:20.873   +20.045 s    si           -16.013 s    10:00:04.859
+[coordinador 10:00:00.836] nodo-2        09:59:48.872   -11.956 s    si           +15.987 s    10:00:04.859
+[coordinador 10:00:00.836] nodo-3        10:00:08.864   +8.036 s     si           -4.005 s     10:00:04.859
+[coordinador 10:00:00.839] promedio de diferencias: +4.031 s | dispersion antes del ajuste (max - min): +32.000 s
+[coordinador 10:00:09.918] ===== Ronda 2 =====
+[coordinador 10:00:09.920] participante  hora           diferencia   en promedio  ajuste       hora ajustada
+[coordinador 10:00:09.920] coordinador   10:00:09.920   +0.000 s     si           -0.028 s     10:00:09.892
+[coordinador 10:00:09.920] nodo-1        10:00:09.876   -0.045 s     si           +0.016 s     10:00:09.892
+[coordinador 10:00:09.920] nodo-2        10:00:09.888   -0.032 s     si           +0.004 s     10:00:09.892
+[coordinador 10:00:09.920] nodo-3        10:00:09.884   -0.036 s     si           +0.008 s     10:00:09.892
+[coordinador 10:00:09.920] promedio de diferencias: -0.028 s | dispersion antes del ajuste (max - min): +0.045 s
+[coordinador 10:00:09.896] fin
+
+[nodo-1] nodo iniciado, hora local 10:00:18.244 (deriva 0 ppm)
+[nodo-1] ajuste recibido -16.013 s: 10:00:20.859 -> 10:00:04.846
+[nodo-1] ajuste recibido +0.016 s: 10:00:09.877 -> 10:00:09.893
+[nodo-2] nodo iniciado, hora local 09:59:46.528 (deriva 2000 ppm)
+[nodo-2] ajuste recibido +15.987 s: 09:59:48.875 -> 10:00:04.862
+[nodo-2] ajuste recibido +0.004 s: 10:00:09.890 -> 10:00:09.894
+[nodo-3] nodo iniciado, hora local 10:00:06.497 (deriva 0 ppm)
+[nodo-3] ajuste recibido -4.005 s: 10:00:08.886 -> 10:00:04.881
+[nodo-3] ajuste recibido +0.008 s: 10:00:09.888 -> 10:00:09.895
+
+===== Escenario 4 - nodo-3 desfasado 5 minutos, promedio simple =====
+
+Relojes iniciales: coordinador 0 s, nodo-1 5 s, nodo-2 -3 s, nodo-3 300 s
+
+[coordinador 09:59:58.620] iniciado. Hora local 09:59:58.612 | nodos: http://nodo-1:8080, http://nodo-2:8080, http://nodo-3:8080 | intervalo 5 s | promedio simple
+[coordinador 10:00:00.635] ===== Ronda 1 =====
+[coordinador 10:00:00.874] participante  hora           diferencia   en promedio  ajuste       hora ajustada
+[coordinador 10:00:00.874] coordinador   10:00:00.866   +0.000 s     si           +75.538 s    10:01:16.404
+[coordinador 10:00:00.874] nodo-1        10:00:05.922   +5.056 s     si           +70.482 s    10:01:16.404
+[coordinador 10:00:00.874] nodo-2        09:59:57.918   -2.948 s     si           +78.486 s    10:01:16.404
+[coordinador 10:00:00.874] nodo-3        10:05:00.910   +300.043 s   si           -224.505 s   10:01:16.404
+[coordinador 10:00:00.878] promedio de diferencias: +75.538 s | dispersion antes del ajuste (max - min): +302.992 s
+[coordinador 10:01:21.464] ===== Ronda 2 =====
+[coordinador 10:01:21.466] participante  hora           diferencia   en promedio  ajuste       hora ajustada
+[coordinador 10:01:21.466] coordinador   10:01:21.466   +0.000 s     si           -0.035 s     10:01:21.431
+[coordinador 10:01:21.466] nodo-1        10:01:21.410   -0.056 s     si           +0.021 s     10:01:21.431
+[coordinador 10:01:21.466] nodo-2        10:01:21.426   -0.040 s     si           +0.005 s     10:01:21.431
+[coordinador 10:01:21.466] nodo-3        10:01:21.423   -0.043 s     si           +0.008 s     10:01:21.431
+[coordinador 10:01:21.466] promedio de diferencias: -0.035 s | dispersion antes del ajuste (max - min): +0.056 s
+[coordinador 10:01:21.436] fin
+
+[nodo-1] nodo iniciado, hora local 10:00:03.232 (deriva 0 ppm)
+[nodo-1] ajuste recibido +70.482 s: 10:00:05.899 -> 10:01:16.380
+[nodo-1] ajuste recibido +0.021 s: 10:01:21.411 -> 10:01:21.432
+[nodo-2] nodo iniciado, hora local 09:59:55.504 (deriva 2000 ppm)
+[nodo-2] ajuste recibido +78.486 s: 09:59:57.914 -> 10:01:16.401
+[nodo-2] ajuste recibido +0.005 s: 10:01:21.429 -> 10:01:21.434
+[nodo-3] nodo iniciado, hora local 10:04:58.492 (deriva 0 ppm)
+[nodo-3] ajuste recibido -224.505 s: 10:05:00.926 -> 10:01:16.420
+[nodo-3] ajuste recibido +0.008 s: 10:01:21.427 -> 10:01:21.435
+
+===== Escenario 5 - nodo-3 desfasado 5 minutos, promedio tolerante a fallas (umbral 30 s) =====
+
+Relojes iniciales: coordinador 0 s, nodo-1 5 s, nodo-2 -3 s, nodo-3 300 s
+
+[coordinador 09:59:58.735] iniciado. Hora local 09:59:58.717 | nodos: http://nodo-1:8080, http://nodo-2:8080, http://nodo-3:8080 | intervalo 5 s | promedio tolerante a fallas (descarta relojes a mas de 30 s de la mediana)
+[coordinador 10:00:00.747] ===== Ronda 1 =====
+[coordinador 10:00:00.939] participante  hora           diferencia   en promedio  ajuste       hora ajustada
+[coordinador 10:00:00.939] coordinador   10:00:00.932   +0.000 s     si           +0.696 s     10:00:01.628
+[coordinador 10:00:00.939] nodo-1        10:00:05.973   +5.041 s     si           -4.345 s     10:00:01.628
+[coordinador 10:00:00.939] nodo-2        09:59:57.979   -2.954 s     si           +3.649 s     10:00:01.628
+[coordinador 10:00:00.939] nodo-3        10:05:00.977   +300.045 s   NO (atipico) -299.349 s   10:00:01.628
+[coordinador 10:00:00.943] promedio de diferencias: +0.696 s | dispersion antes del ajuste (max - min): +302.998 s
+[coordinador 10:00:06.683] ===== Ronda 2 =====
+[coordinador 10:00:06.685] participante  hora           diferencia   en promedio  ajuste       hora ajustada
+[coordinador 10:00:06.685] coordinador   10:00:06.685   +0.000 s     si           -0.030 s     10:00:06.655
+[coordinador 10:00:06.685] nodo-1        10:00:06.644   -0.041 s     si           +0.011 s     10:00:06.655
+[coordinador 10:00:06.685] nodo-2        10:00:06.651   -0.035 s     si           +0.004 s     10:00:06.655
+[coordinador 10:00:06.685] nodo-3        10:00:06.641   -0.045 s     si           +0.015 s     10:00:06.655
+[coordinador 10:00:06.685] promedio de diferencias: -0.030 s | dispersion antes del ajuste (max - min): +0.045 s
+[coordinador 10:00:06.660] fin
+
+[nodo-1] nodo iniciado, hora local 10:00:03.199 (deriva 0 ppm)
+[nodo-1] ajuste recibido -4.345 s: 10:00:05.962 -> 10:00:01.616
+[nodo-1] ajuste recibido +0.011 s: 10:00:06.645 -> 10:00:06.656
+[nodo-2] nodo iniciado, hora local 09:59:55.463 (deriva 2000 ppm)
+[nodo-2] ajuste recibido +3.649 s: 09:59:57.977 -> 10:00:01.627
+[nodo-2] ajuste recibido +0.004 s: 10:00:06.653 -> 10:00:06.658
+[nodo-3] nodo iniciado, hora local 10:04:58.486 (deriva 0 ppm)
+[nodo-3] ajuste recibido -299.349 s: 10:05:00.988 -> 10:00:01.639
+[nodo-3] ajuste recibido +0.015 s: 10:00:06.644 -> 10:00:06.659
+
+===== Escenario 6 - nodo-3 se desconecta despues de la ronda 1 y vuelve antes de la ronda 4 =====
+
+Relojes iniciales: coordinador 0 s, nodo-1 10 s, nodo-2 -6 s, nodo-3 4 s
+nodo-3 detenido tras la ronda 1 (docker compose stop) y reiniciado tras la ronda 3 (vuelve con su reloj original)
+
+[coordinador 09:59:58.855] iniciado. Hora local 09:59:58.845 | nodos: http://nodo-1:8080, http://nodo-2:8080, http://nodo-3:8080 | intervalo 5 s | promedio simple
+[coordinador 10:00:00.866] ===== Ronda 1 =====
+[coordinador 10:00:01.081] participante  hora           diferencia   en promedio  ajuste       hora ajustada
+[coordinador 10:00:01.082] coordinador   10:00:01.074   +0.000 s     si           +2.039 s     10:00:03.113
+[coordinador 10:00:01.082] nodo-1        10:00:11.136   +10.061 s    si           -8.023 s     10:00:03.113
+[coordinador 10:00:01.082] nodo-2        09:59:55.116   -5.958 s     si           +7.997 s     10:00:03.113
+[coordinador 10:00:01.082] nodo-3        10:00:05.126   +4.052 s     si           -2.013 s     10:00:03.113
+[coordinador 10:00:01.086] promedio de diferencias: +2.039 s | dispersion antes del ajuste (max - min): +16.019 s
+[coordinador 10:00:08.171] ===== Ronda 2 =====
+[coordinador 10:00:10.175] participante  hora           diferencia   en promedio  ajuste       hora ajustada
+[coordinador 10:00:10.175] coordinador   10:00:10.174   +0.000 s     si           -0.030 s     10:00:10.144
+[coordinador 10:00:10.175] nodo-1        10:00:10.113   -0.061 s     si           +0.031 s     10:00:10.144
+[coordinador 10:00:10.175] nodo-2        10:00:10.145   -0.030 s     si           -0.001 s     10:00:10.144
+[coordinador 10:00:10.175] nodo-3        SIN RESPUESTA  -            no           -            -  (timeout)
+[coordinador 10:00:10.175] promedio de diferencias: -0.030 s | dispersion antes del ajuste (max - min): +0.061 s
+[coordinador 10:00:15.145] ===== Ronda 3 =====
+[coordinador 10:00:17.146] participante  hora           diferencia   en promedio  ajuste       hora ajustada
+[coordinador 10:00:17.146] coordinador   10:00:17.146   +0.000 s     si           +0.005 s     10:00:17.151
+[coordinador 10:00:17.146] nodo-1        10:00:17.146   +0.000 s     si           +0.004 s     10:00:17.151
+[coordinador 10:00:17.146] nodo-2        10:00:17.160   +0.014 s     si           -0.009 s     10:00:17.151
+[coordinador 10:00:17.146] nodo-3        SIN RESPUESTA  -            no           -            -  (timeout)
+[coordinador 10:00:17.146] promedio de diferencias: +0.005 s | dispersion antes del ajuste (max - min): +0.014 s
+[coordinador 10:00:22.156] ===== Ronda 4 =====
+[coordinador 10:00:22.253] participante  hora           diferencia   en promedio  ajuste       hora ajustada
+[coordinador 10:00:22.253] coordinador   10:00:22.253   +0.000 s     si           +0.509 s     10:00:22.762
+[coordinador 10:00:22.253] nodo-1        10:00:22.252   -0.000 s     si           +0.510 s     10:00:22.762
+[coordinador 10:00:22.253] nodo-2        10:00:22.267   +0.014 s     si           +0.496 s     10:00:22.762
+[coordinador 10:00:22.253] nodo-3        10:00:24.277   +2.024 s     si           -1.515 s     10:00:22.762
+[coordinador 10:00:22.253] promedio de diferencias: +0.509 s | dispersion antes del ajuste (max - min): +2.024 s
+[coordinador 10:00:22.778] fin
+
+[nodo-1] nodo iniciado, hora local 10:00:08.461 (deriva 0 ppm)
+[nodo-1] ajuste recibido -8.023 s: 10:00:11.105 -> 10:00:03.083
+[nodo-1] ajuste recibido +0.031 s: 10:00:10.115 -> 10:00:10.146
+[nodo-1] ajuste recibido +0.004 s: 10:00:17.147 -> 10:00:17.151
+[nodo-1] ajuste recibido +0.510 s: 10:00:22.253 -> 10:00:22.763
+[nodo-2] nodo iniciado, hora local 09:59:52.688 (deriva 2000 ppm)
+[nodo-2] ajuste recibido +7.997 s: 09:59:55.121 -> 10:00:03.118
+[nodo-2] ajuste recibido -0.001 s: 10:00:10.152 -> 10:00:10.151
+[nodo-2] ajuste recibido -0.009 s: 10:00:17.166 -> 10:00:17.157
+[nodo-2] ajuste recibido +0.496 s: 10:00:22.269 -> 10:00:22.764
+[nodo-3] nodo iniciado, hora local 10:00:02.734 (deriva 0 ppm)
+[nodo-3] ajuste recibido -2.013 s: 10:00:05.132 -> 10:00:03.119
+[nodo-3] nodo iniciado, hora local 10:00:19.812 (deriva 0 ppm)
+[nodo-3] ajuste recibido -1.515 s: 10:00:24.254 -> 10:00:22.739
+
+===== Escenario 7 - falla el coordinador (nodo-2 deriva 20000 ppm = 20 ms/s) =====
+
+Relojes iniciales: coordinador 0 s, nodo-1 10 s, nodo-2 -6 s, nodo-3 4 s
+
+Con coordinador (tras la ronda 3)  nodo-1 10:00:14.756 (+0 ms) | nodo-2 10:00:14.795 (+40 ms) | nodo-3 10:00:14.765 (+9 ms) | dispersion 40 ms
+--- se detiene el coordinador ---
+Sin coordinador, +5 s              nodo-1 10:00:20.566 (+0 ms) | nodo-2 10:00:20.719 (+154 ms) | nodo-3 10:00:20.572 (+7 ms) | dispersion 154 ms
+Sin coordinador, +10 s             nodo-1 10:00:25.801 (+0 ms) | nodo-2 10:00:26.073 (+272 ms) | nodo-3 10:00:25.821 (+19 ms) | dispersion 272 ms
+Sin coordinador, +20 s             nodo-1 10:00:36.100 (+0 ms) | nodo-2 10:00:36.578 (+478 ms) | nodo-3 10:00:36.119 (+19 ms) | dispersion 478 ms
+
+[coordinador 09:59:58.614] iniciado. Hora local 09:59:58.604 | nodos: http://nodo-1:8080, http://nodo-2:8080, http://nodo-3:8080 | intervalo 5 s | promedio simple
+[coordinador 10:00:00.627] ===== Ronda 1 =====
+[coordinador 10:00:00.920] participante  hora           diferencia   en promedio  ajuste       hora ajustada
+[coordinador 10:00:00.921] coordinador   10:00:00.913   +0.000 s     si           +2.040 s     10:00:02.953
+[coordinador 10:00:00.921] nodo-1        10:00:10.980   +10.067 s    si           -8.027 s     10:00:02.953
+[coordinador 10:00:00.921] nodo-2        09:59:54.965   -5.948 s     si           +7.988 s     10:00:02.953
+[coordinador 10:00:00.921] nodo-3        10:00:04.952   +4.039 s     si           -2.000 s     10:00:02.953
+[coordinador 10:00:00.925] promedio de diferencias: +2.040 s | dispersion antes del ajuste (max - min): +16.015 s
+[coordinador 10:00:08.009] ===== Ronda 2 =====
+[coordinador 10:00:08.010] participante  hora           diferencia   en promedio  ajuste       hora ajustada
+[coordinador 10:00:08.011] coordinador   10:00:08.010   +0.000 s     si           -0.010 s     10:00:08.001
+[coordinador 10:00:08.011] nodo-1        10:00:07.943   -0.067 s     si           +0.057 s     10:00:08.001
+[coordinador 10:00:08.011] nodo-2        10:00:08.078   +0.067 s     si           -0.077 s     10:00:08.001
+[coordinador 10:00:08.011] nodo-3        10:00:07.971   -0.039 s     si           +0.030 s     10:00:08.001
+[coordinador 10:00:08.011] promedio de diferencias: -0.010 s | dispersion antes del ajuste (max - min): +0.134 s
+[coordinador 10:00:13.006] ===== Ronda 3 =====
+[coordinador 10:00:13.007] participante  hora           diferencia   en promedio  ajuste       hora ajustada
+[coordinador 10:00:13.007] coordinador   10:00:13.007   +0.000 s     si           +0.025 s     10:00:13.032
+[coordinador 10:00:13.007] nodo-1        10:00:13.007   +0.000 s     si           +0.025 s     10:00:13.032
+[coordinador 10:00:13.007] nodo-2        10:00:13.108   +0.100 s     si           -0.075 s     10:00:13.032
+[coordinador 10:00:13.007] nodo-3        10:00:13.007   +0.000 s     si           +0.025 s     10:00:13.032
+[coordinador 10:00:13.007] promedio de diferencias: +0.025 s | dispersion antes del ajuste (max - min): +0.100 s
+
+[nodo-1] nodo iniciado, hora local 10:00:08.277 (deriva 0 ppm)
+[nodo-1] ajuste recibido -8.027 s: 10:00:10.944 -> 10:00:02.917
+[nodo-1] ajuste recibido +0.057 s: 10:00:07.944 -> 10:00:08.002
+[nodo-1] ajuste recibido +0.025 s: 10:00:13.008 -> 10:00:13.033
+[nodo-2] nodo iniciado, hora local 09:59:52.475 (deriva 20000 ppm)
+[nodo-2] ajuste recibido +7.988 s: 09:59:54.977 -> 10:00:02.964
+[nodo-2] ajuste recibido -0.077 s: 10:00:08.080 -> 10:00:08.003
+[nodo-2] ajuste recibido -0.075 s: 10:00:13.109 -> 10:00:13.034
+[nodo-3] nodo iniciado, hora local 10:00:02.521 (deriva 0 ppm)
+[nodo-3] ajuste recibido -2.000 s: 10:00:04.970 -> 10:00:02.971
+[nodo-3] ajuste recibido +0.030 s: 10:00:07.975 -> 10:00:08.004
+[nodo-3] ajuste recibido +0.025 s: 10:00:13.009 -> 10:00:13.034
